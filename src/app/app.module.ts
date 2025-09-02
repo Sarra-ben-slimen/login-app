@@ -3,19 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login/login.component';
 import { Routes, RouterModule } from '@angular/router';
+import { LoginFormComponent } from './features/components/login-form/login-form/login-form.component';
 
 const routes: Routes =
 [
     { path: '', redirectTo: 'login', pathMatch: 'full' }, //default route
-{path:'login',component:LoginComponent}  
+{path:'login',component:LoginFormComponent}  
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
