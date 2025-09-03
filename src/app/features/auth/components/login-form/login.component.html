@@ -1,0 +1,25 @@
+<div class="content">
+<form [formGroup]="loginForm" (ngSubmit)="onsubmit()">
+            <h2>Login</h2>
+           <div class="input-box">
+                        <app-input-field class="input-field "  label="Email" type="email" placeholder="Email" [control]="loginForm.get('email')"></app-input-field>
+
+                  <i class="ri-user-fill"></i>
+            </div>
+
+            <div class="input-box">
+                 <app-input-field class="input-field " label="Password" id="PassWord" autocomplete="new-password" placeholder="PassWord" type="password" [control]="loginForm.get('password')"></app-input-field>
+
+                  <i class="ri-eye-off-fill toggle-password" id="" togglePassword></i>
+            </div>
+
+            <div class="remember">
+                  <label><input type="checkbox"> Remember me</label>
+                  <a href="#">Forget PassWord</a>
+            </div>
+            <button type="submit" class="btn-Submit" [disabled]="loginForm.invalid">Login</button>
+            <p *ngIf="error" style="color:red">{{ error }}</p>
+
+      </form>
+
+</div>

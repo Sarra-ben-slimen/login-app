@@ -4,22 +4,26 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginFormComponent } from './features/components/login-form/login-form/login-form.component';
+import { LoginComponent } from './features/auth/components/login-form/login.component';
+import { AuthModule } from './features/auth/auth.module';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes =
-[
+  [
     { path: '', redirectTo: 'login', pathMatch: 'full' }, //default route
-{path:'login',component:LoginFormComponent}  
-]
+    { path: 'login', component: LoginComponent }
+  ]
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginFormComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    AuthModule,
     RouterModule.forRoot(routes)
+     
   ],
   providers: [],
   bootstrap: [AppComponent]
