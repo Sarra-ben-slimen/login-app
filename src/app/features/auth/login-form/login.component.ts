@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent {
   loginForm: FormGroup;
   error = '';
   
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService,private router:Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password:['',Validators.required]
@@ -24,7 +25,16 @@ export class LoginComponent {
       this.authService.login(email,password).subscribe({
         next: (res) => {
           this.authService.saveToken(res.token)
-          alert('login done')
+          var role = this.authService.getUserRole();
+          console.log('role is'+role);
+
+          if (role === 'admin') {
+            this.router.navigate(['/admin-dashboard'])
+          }
+          else
+          {
+            this.router.navigate(['/user-dashboard'])
+          }
         },
         error: () => {
           this.error='invalide data'
