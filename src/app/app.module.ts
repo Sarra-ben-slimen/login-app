@@ -11,11 +11,13 @@ import { UserDashboardComponent } from './features/user-dashboard/user-dashboard
 import { AdminDashboardComponent } from './features/admin-dashboard/admin-dashboard.component';
 import { authGuard } from './core/guards/auth.guard';
 import { roleGuard } from './core/guards/role.guard';
+import { RegisterComponent } from './features/auth/register/register.component';
 
 
 const routes: Routes =
   [
     { path: '', redirectTo: 'login', pathMatch: 'full' }, //default route
+    { path: 'register',component:RegisterComponent},
     { path: 'login', component: LoginComponent },
  {
             path: 'user-dashboard',

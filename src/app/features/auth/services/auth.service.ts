@@ -5,6 +5,10 @@ import { jwtDecode } from 'jwt-decode';
 interface LoginResponse {
       token: string;
 }
+
+interface registerResponse {
+      code: string;
+}
 interface TokenPayLoad
 {
       exp: number;
@@ -18,6 +22,11 @@ export class AuthService {
 
       login(email: string, password: string): Observable<LoginResponse> {
             return this.http.post<LoginResponse>(`${this.apiURL}/Auth/login`, { email, password });
+      }
+
+      register(email: string, password: string, repeadedpassword: string): Observable<registerResponse>
+      {
+        return this.http.post<registerResponse>(`${this.apiURL}/Auth/registre`,{email,password,repeadedpassword})
       }
       saveToken(token: string) {
             localStorage.setItem('token', token);
@@ -43,4 +52,6 @@ export class AuthService {
             const decoded = jwtDecode<{ role: string }>(token);
             return decoded.role || '';
       }
+
+   
 }

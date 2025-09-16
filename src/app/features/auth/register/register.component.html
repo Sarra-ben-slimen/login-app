@@ -1,0 +1,37 @@
+
+<section class="container">
+      <div class="register-container">
+            <div class="form-container">
+
+<form [formGroup]="registreForm" (ngSubmit)="onRegistre()">
+            <h1>Register</h1>
+            <p>Please fill in this form to create an account.</p>
+            <hr>
+
+            <label for="email"><b>Email</b></label>
+            <app-input-field class="input-field " label="Email" type="email" placeholder="Enter Email"
+                  [control]="registreForm.get('email')"></app-input-field>
+
+            <label for="psw"><b>Password</b></label>
+
+             <app-input-field class="input-field " label="password" type="password" placeholder="Enter password"
+             [control]="registreForm.get('password')"></app-input-field>
+
+            <label for="psw-repeat"><b>Repeat Password</b></label>
+
+            <app-input-field class="input-field " label="password" type="password" placeholder="Repeat Password" id="psw-repeat"
+                  [control]="registreForm.get('repeatedPassword')"></app-input-field>
+                  
+            <hr>
+                        <button class="opacity" [disabled]="registreForm.invalid">SUBMIT</button>
+                        <p *ngIf="error" style="color:red">{{ error }}</p>
+
+      <div class=" signin">
+            <p>Already have an account? <a href="/login">Sign in</a>.</p>
+      </div>
+</form>
+
+</div>
+</div>
+<div class="theme-btn-container"></div>
+</section>

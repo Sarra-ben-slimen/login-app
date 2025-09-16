@@ -1,25 +1,22 @@
-<div class="content">
-<form [formGroup]="loginForm" (ngSubmit)="onsubmit()">
-            <h2>Login</h2>
-           <div class="input-box">
-                        <app-input-field class="input-field "  label="Email" type="email" placeholder="Email" [control]="loginForm.get('email')"></app-input-field>
 
-                  <i class="ri-user-fill"></i>
+
+<section class="container">
+      <div class="login-container">
+            <div class="form-container">
+               
+                  <h1 class="opacity">LOGIN</h1>
+                  <form [formGroup]="loginForm" (ngSubmit)="onsubmit()">
+            <app-input-field class="input-field " label="Email" type="email" placeholder="Email" [control]="loginForm.get('email')"></app-input-field>
+            <app-input-field class="input-field " label="Password" id="PassWord" autocomplete="new-password" placeholder="PassWord"  type="password" [control]="loginForm.get('password')"></app-input-field>
+                        <button class="opacity" [disabled]="loginForm.invalid">SUBMIT</button>
+                        <p *ngIf="error" style="color:red">{{ error }}</p>
+
+                  </form>
+                  <div class="register-forget opacity">
+                        <a href="/register">REGISTER</a>
+                        <a href="">FORGOT PASSWORD</a>
+                  </div>
             </div>
-
-            <div class="input-box">
-                 <app-input-field class="input-field " label="Password" id="PassWord" autocomplete="new-password" placeholder="PassWord" type="password" [control]="loginForm.get('password')"></app-input-field>
-
-                  <i class="ri-eye-off-fill toggle-password" id="" togglePassword></i>
-            </div>
-
-            <div class="remember">
-                  <label><input type="checkbox"> Remember me</label>
-                  <a href="#">Forget PassWord</a>
-            </div>
-            <button type="submit" class="btn-Submit" [disabled]="loginForm.invalid">Login</button>
-            <p *ngIf="error" style="color:red">{{ error }}</p>
-
-      </form>
-
-</div>
+      </div>
+      <div class="theme-btn-container"></div>
+</section>
