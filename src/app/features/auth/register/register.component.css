@@ -25,7 +25,7 @@
 
 
 
-.register-container form button {
+.subbmit {
       background-color: var(--primary-color);
       color: var(--color);
       display: block;
@@ -50,7 +50,7 @@
       -o-transition: all 0.1s ease-in-out;
 }
 
-.register-container form button:hover {
+.subbmit:hover {
       box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.15);
       transform: scale(1.02);
       -webkit-transform: scale(1.02);
@@ -60,7 +60,13 @@
 }
 
 
-
+.password-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      /* places input and button side by side */
+      gap: 0.5rem;
+}
 
  
 
@@ -82,6 +88,27 @@
 .theme-btn:hover {
       width: 40px !important;
 }
+
+.input-container {
+      flex: 0  auto;
+      display: -ms-flexbox;
+      /* IE10 */
+      display: flex;
+      width:500px;
+
+      margin-bottom: 15px;
+}
+
+.eye-btn {
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-size: 16px;
+      color: #333;
+
+}
+
+
 
 @keyframes wobble {
       0% {

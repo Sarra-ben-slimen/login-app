@@ -1,18 +1,15 @@
 .input-field {
       display: block;
       padding: 14.5px;
-      width: 100%;
+      width: 288px;
       margin: 2rem 0;
-      color: var(--color);
-      outline: none;
-      background-color: #9191911f;
-      border: none;
+       outline: none;
+       border: none;
       border-radius: 5px;
       font-weight: 500;
       letter-spacing: 0.8px;
       font-size: 15px;
-      backdrop-filter: blur(15px);
-      -webkit-border-radius: 5px;
+       -webkit-border-radius: 5px;
       -moz-border-radius: 5px;
       -ms-border-radius: 5px;
       -o-border-radius: 5px;
