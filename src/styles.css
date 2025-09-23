@@ -1,7 +1,8 @@
 :root {
-      --background: #4CA771;
-      --color: #C0E6BA;
-      --primary-color: #013237;
+/*       --background: #4CA771;
+ */      --color: #C0E6BA;
+      --primary-color: #4caf50;
+      background-image: url('../src/assets/background.jpg');
 }
 
 * {

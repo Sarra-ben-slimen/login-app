@@ -1,6 +1,6 @@
 <section class="container">
       <div class="register-container">
-            <div class="form-container">
+            <div class="form-container" *ngIf ="!showVerification">
 
                   <form [formGroup]="registreForm" (ngSubmit)="onRegistre()">
                         <h1>Register</h1>
@@ -63,6 +63,12 @@
                         </div>
                   </form>
 
+
+            </div>
+
+            <div  class="form-container" *ngIf="showVerification">
+                  <app-input-field placeholder="Enter verification code" name="verificationCode"  formControlName="verificationCode" class="input-field "/>
+                  <button (click)="verifyCode()" class="subbmit">Verify Code</button>
             </div>
       </div>
       <div class="theme-btn-container"></div>

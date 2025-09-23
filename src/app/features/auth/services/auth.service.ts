@@ -24,13 +24,19 @@ export class AuthService {
             return this.http.post<LoginResponse>(`${this.apiURL}/Auth/login`, { email, password });
       }
 
-      register(email: string, password: string, repeadedpassword: string): Observable<registerResponse>
+      register(email: string, password: string, repeatedPassword: string, codeVerification:string): Observable<registerResponse>
       {
-        return this.http.post<registerResponse>(`${this.apiURL}/Auth/registre`,{email,password,repeadedpassword})
+            return this.http.post<registerResponse>(`${this.apiURL}/Auth/register`, { email, password, repeatedPassword, codeVerification })
       }
       saveToken(token: string) {
             localStorage.setItem('token', token);
       }
+
+      verifyCode(UserId: string, code: string,email:string,password:string): Observable<{ token: string }> {
+            return this.http.post<{ token: string }>(`${this.apiURL}/Auth/verifyCode`, { UserId, code, email, password });
+      }
+
+
       logout() {
             localStorage.removeItem('token');
       }
@@ -52,6 +58,6 @@ export class AuthService {
             const decoded = jwtDecode<{ role: string }>(token);
             return decoded.role || '';
       }
-
+      
    
 }
