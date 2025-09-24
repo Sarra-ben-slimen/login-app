@@ -5,6 +5,10 @@ import { jwtDecode } from 'jwt-decode';
 interface LoginResponse {
       token: string;
 }
+
+interface registerResponse {
+      code: string;
+}
 interface TokenPayLoad
 {
       exp: number;
@@ -19,10 +23,21 @@ export class AuthService {
       login(email: string, password: string): Observable<LoginResponse> {
             return this.http.post<LoginResponse>(`${this.apiURL}/Auth/login`, { email, password });
       }
+
+      register(email: string, password: string, repeatedPassword: string, codeVerification:string): Observable<registerResponse>
+      {
+            return this.http.post<registerResponse>(`${this.apiURL}/Auth/register`, { email, password, repeatedPassword, codeVerification })
+      }
       saveToken(token: string) {
             localStorage.setItem('token', token);
       }
-      logout() {
+
+      verifyCode(UserId: string, code: string,email:string,password:string): Observable<{ token: string }> {
+            return this.http.post<{ token: string }>(`${this.apiURL}/Auth/verifyCode`, { UserId, code, email, password });
+      }
+
+
+      removeToken() {
             localStorage.removeItem('token');
       }
       isLoggedIn(): boolean{
@@ -43,4 +58,6 @@ export class AuthService {
             const decoded = jwtDecode<{ role: string }>(token);
             return decoded.role || '';
       }
+      
+   
 }

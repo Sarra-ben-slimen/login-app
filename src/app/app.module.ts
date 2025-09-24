@@ -11,24 +11,27 @@ import { UserDashboardComponent } from './features/user-dashboard/user-dashboard
 import { AdminDashboardComponent } from './features/admin-dashboard/admin-dashboard.component';
 import { authGuard } from './core/guards/auth.guard';
 import { roleGuard } from './core/guards/role.guard';
+import { RegisterComponent } from './features/auth/register/register.component';
+import { SharedModule } from './shared/shared.module';
 
 
 const routes: Routes =
   [
     { path: '', redirectTo: 'login', pathMatch: 'full' }, //default route
+    { path: 'register', component: RegisterComponent },
     { path: 'login', component: LoginComponent },
- {
-            path: 'user-dashboard',
-            component: UserDashboardComponent,
-            canActivate: [authGuard, roleGuard],
-            data: { role: 'user' }
-      },
-      {
-            path: 'admin-dashboard',
-            component: AdminDashboardComponent,
-            canActivate: [authGuard, roleGuard],
-            data: { role: 'admin' }
-      }
+    {
+      path: 'user-dashboard',
+      component: UserDashboardComponent,
+      canActivate: [authGuard, roleGuard],
+      data: { role: 'user' }
+    },
+    {
+      path: 'admin-dashboard',
+      component: AdminDashboardComponent,
+      canActivate: [authGuard, roleGuard],
+      data: { role: 'admin' }
+    }
   ]
 
 @NgModule({
@@ -39,8 +42,9 @@ const routes: Routes =
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    AuthModule
-     
+    AuthModule,
+    SharedModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

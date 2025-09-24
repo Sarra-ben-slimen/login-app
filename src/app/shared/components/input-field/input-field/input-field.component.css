@@ -1,0 +1,22 @@
+.input-field {
+      display: block;
+      padding: 14.5px;
+      width: 288px;
+      margin: 5px 0;
+       outline: none;
+       border: none;
+      border-radius: 5px;
+      font-weight: 500;
+      letter-spacing: 0.8px;
+      font-size: 15px;
+       -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+}
+
+.input-field:focus {
+      box-shadow: 0 0 16px 1px rgba(0, 0, 0, 0.2);
+      animation: wobble 0.3s ease-in;
+      -webkit-animation: wobble 0.3s ease-in;
+}

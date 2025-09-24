@@ -1,3 +1,6 @@
-<a [routerLink]="['/login']">Login</a>
+<!-- AppComponent template -->
+<app-nav-bar></app-nav-bar> <!-- Nav always visible -->
 
-<router-outlet></router-outlet>
+<div class="main-content">
+      <router-outlet></router-outlet> <!-- Pages render here -->
+</div>

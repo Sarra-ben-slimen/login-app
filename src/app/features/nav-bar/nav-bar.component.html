@@ -1,0 +1,17 @@
+<nav class="flex align-center">
+      <p><span>My</span>Application</p>
+      <ul>
+            <li class="big-screens">
+                  <a href="#">Home</a>
+                  <a href="#">Store</a>
+                  <a href="#">About Us</a>
+                  <a class="btn register" href="/register" *ngIf="connected">Register</a>
+                  <a class="btn login" href="/login" *ngIf="connected">Log In</a>
+                  <a class="btn login" (click)="logout()" *ngIf="!connected">Log Out</a>
+
+            </li>
+            <li class="small-screens">
+                  <i class="fa-solid fa-bars"></i>
+            </li>
+      </ul>
+</nav>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
@@ -8,17 +8,32 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   error = '';
-  
+  token: string | null = null;
   constructor(private fb: FormBuilder, private authService: AuthService,private router:Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password:['',Validators.required]
     })
   }
+ngOnInit(): void {
+  this.token = this.authService.getToken();
+  if (this.token) {
+    var role = this.authService.getUserRole();
+    console.log('role is' + role);
+    if (role==='admin') {
+      this.router.navigate(['admin-dashboard']);
 
+    }
+    else
+    {
+      this.router.navigate(['/user-dashboard']);
+        
+    }
+  }
+}
   onsubmit() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
